@@ -1,0 +1,86 @@
+<section class="main-404 section">
+
+  <div class="page-width">
+
+    <div class="main-404__content">
+
+      <p class="main-404__code">
+        404
+      </p>
+
+
+      <h1 class="heading-lg">
+        Page not found
+      </h1>
+
+
+      <p class="main-404__text">
+        Sorry, we couldn't find the page you're looking for.
+      </p>
+
+
+      <a
+        href="{{ routes.root_url }}"
+        class="button"
+      >
+        Back to home
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{% stylesheet %}
+
+  .main-404__content {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    text-align: center;
+  }
+
+
+  .main-404__code {
+    margin-bottom: 1rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+  }
+
+
+  .main-404__content .heading-lg {
+    margin-bottom: 1rem;
+  }
+
+
+  .main-404__text {
+    margin-bottom: 2rem;
+
+    color: var(--color-text-muted);
+  }
+
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "Main 404",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main 404"
+    }
+  ]
+}
+{% endschema %}

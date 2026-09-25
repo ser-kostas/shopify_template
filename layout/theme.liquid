@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+      name="theme-color"
+      content="{{ settings.color_primary }}"
+    >
+
+
+    {% comment %}
+      Page title
+    {% endcomment %}
+
+    <title>
+      {% if page_title %}
+        {{ page_title }}
+      {% endif %}
+
+      {% unless page_title contains shop.name %}
+        - {{ shop.name }}
+      {% endunless %}
+    </title>
+
+
+    {% comment %}
+      Meta description
+    {% endcomment %}
+
+    {% if page_description %}
+      <meta
+        name="description"
+        content="{{ page_description | escape }}"
+      >
+    {% endif %}
+
+
+    {% comment %}
+      Canonical URL
+    {% endcomment %}
+
+    <link
+      rel="canonical"
+      href="{{ canonical_url }}"
+    >
+
+
+    {% comment %}
+      Favicon
+    {% endcomment %}
+
+    {% if settings.favicon != blank %}
+
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 64 }}"
+      >
+
+    {% endif %}
+
+
+    {% comment %}
+      Shopify font loading
+    {% endcomment %}
+
+    {{ settings.font_body | font_face }}
+
+    {{ settings.font_heading | font_face }}
+
+
+    {% comment %}
+      Main theme stylesheet
+    {% endcomment %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+
+    {% comment %}
+      Main theme JavaScript
+    {% endcomment %}
+
+    <script
+      src="{{ 'theme.js' | asset_url }}"
+      defer="defer"
+    ></script>
+
+
+    {% comment %}
+      Theme CSS variables
+    {% endcomment %}
+
+    <style>
+
+      :root {
+
+        --color-background:
+          {{ settings.color_background }};
+
+        --color-surface:
+          {{ settings.color_surface }};
+
+        --color-text:
+          {{ settings.color_text }};
+
+        --color-text-muted:
+          {{ settings.color_text_muted }};
+
+        --color-primary:
+          {{ settings.color_primary }};
+
+        --color-primary-hover:
+          {{ settings.color_primary_hover }};
+
+        --color-border:
+          {{ settings.color_border }};
+
+        --page-width:
+          {{ settings.page_width }}px;
+
+        --content-width:
+          {{ settings.content_width }}px;
+
+        --heading-scale:
+          {{ settings.heading_scale }}%;
+
+        --section-spacing:
+          {{ settings.section_spacing }}px;
+
+        --button-radius:
+          {{ settings.button_radius }}px;
+
+        --font-body:
+          {{ settings.font_body.family }},
+          {{ settings.font_body.fallback_families }};
+
+        --font-heading:
+          {{ settings.font_heading.family }},
+          {{ settings.font_heading.fallback_families }};
+
+      }
+
+    </style>
+
+
+    {% comment %}
+      Shopify required header content
+    {% endcomment %}
+
+    {{ content_for_header }}
+
+  </head>
+
+
+  <body>
+
+    {% comment %}
+      Accessibility:
+      Allows keyboard users to skip directly
+      to the main content.
+    {% endcomment %}
+
+    <a
+      class="visually-hidden"
+      href="#MainContent"
+    >
+      Skip to content
+    </a>
+
+
+    {% comment %}
+      Header group
+    {% endcomment %}
+
+    {% sections 'header-group' %}
+
+
+    {% comment %}
+      Main page content
+
+      Shopify inserts the current template here.
+    {% endcomment %}
+
+    <main
+      id="MainContent"
+      role="main"
+    >
+
+      {{ content_for_layout }}
+
+    </main>
+
+
+    {% comment %}
+      Footer group
+    {% endcomment %}
+
+    {% sections 'footer-group' %}
+
+  </body>
+</html>

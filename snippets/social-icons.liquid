@@ -1,0 +1,103 @@
+<div class="social-icons">
+
+  {% if settings.social_instagram != blank %}
+
+    <a
+      href="{{ settings.social_instagram }}"
+      class="social-icons__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+    >
+      Instagram
+    </a>
+
+  {% endif %}
+
+
+  {% if settings.social_facebook != blank %}
+
+    <a
+      href="{{ settings.social_facebook }}"
+      class="social-icons__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+    >
+      Facebook
+    </a>
+
+  {% endif %}
+
+
+  {% if settings.social_tiktok != blank %}
+
+    <a
+      href="{{ settings.social_tiktok }}"
+      class="social-icons__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="TikTok"
+    >
+      TikTok
+    </a>
+
+  {% endif %}
+
+
+  {% if settings.social_youtube != blank %}
+
+    <a
+      href="{{ settings.social_youtube }}"
+      class="social-icons__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="YouTube"
+    >
+      YouTube
+    </a>
+
+  {% endif %}
+
+
+  {% if settings.social_pinterest != blank %}
+
+    <a
+      href="{{ settings.social_pinterest }}"
+      class="social-icons__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Pinterest"
+    >
+      Pinterest
+    </a>
+
+  {% endif %}
+
+</div>
+
+
+{% stylesheet %}
+
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+
+  .social-icons__link {
+    color: var(--color-text-muted);
+
+    font-size: 0.875rem;
+
+    transition:
+      color var(--transition-normal);
+  }
+
+
+  .social-icons__link:hover {
+    color: var(--color-text);
+  }
+
+{% endstylesheet %}

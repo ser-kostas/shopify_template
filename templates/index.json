@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Discover something beautiful",
+        "text": "A simple, elegant storefront designed to showcase your products.",
+        "button_label": "Shop now",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured products",
+        "products_to_show": 4
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Made for everyday life",
+        "text": "Tell your customers what makes your brand different."
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Stay in the loop",
+        "text": "Sign up for new products, offers and updates."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection",
+    "image_with_text",
+    "newsletter"
+  ]
+}

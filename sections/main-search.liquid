@@ -1,0 +1,412 @@
+<section class="main-search section">
+
+  <div class="page-width">
+
+    <header class="main-search__header">
+
+      <h1 class="heading-lg">
+        {% if search.performed %}
+          Search results
+        {% else %}
+          Search
+        {% endif %}
+      </h1>
+
+
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        class="main-search__form"
+      >
+
+        <label
+          class="visually-hidden"
+          for="SearchInput-{{ section.id }}"
+        >
+          Search
+        </label>
+
+        <input
+          id="SearchInput-{{ section.id }}"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search products..."
+          class="main-search__input"
+          autocomplete="off"
+        >
+
+        <button
+          type="submit"
+          class="button"
+        >
+          Search
+        </button>
+
+      </form>
+
+    </header>
+
+
+    {% if search.performed %}
+
+      {% if search.results_count > 0 %}
+
+        <p class="main-search__count">
+          {{ search.results_count }}
+          {% if search.results_count == 1 %}
+            result
+          {% else %}
+            results
+          {% endif %}
+          for "{{ search.terms | escape }}"
+        </p>
+
+
+        <div class="product-grid main-search__results">
+
+          {% for item in search.results %}
+
+            {% if item.object_type == 'product' %}
+
+              {% render 'product-card',
+                product: item,
+                show_vendor: false
+              %}
+
+            {% else %}
+
+              <article class="main-search__result">
+
+                {% if item.featured_image %}
+
+                  <a
+                    href="{{ item.url }}"
+                    class="main-search__result-image"
+                  >
+
+                    {{
+                      item.featured_image
+                      | image_url: width: 800
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '300, 500, 700, 800',
+                        sizes: '(min-width: 990px) 25vw, (min-width: 750px) 50vw, 100vw',
+                        alt: item.title
+                    }}
+
+                  </a>
+
+                {% endif %}
+
+
+                <div class="main-search__result-content">
+
+                  <p class="main-search__result-type">
+                    {{ item.object_type }}
+                  </p>
+
+                  <h2 class="main-search__result-title">
+
+                    <a href="{{ item.url }}">
+                      {{ item.title }}
+                    </a>
+
+                  </h2>
+
+                </div>
+
+              </article>
+
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
+
+
+        {% paginate search.results by 24 %}
+
+          {% if paginate.pages > 1 %}
+
+            <nav
+              class="main-search__pagination"
+              aria-label="Search results pages"
+            >
+
+              {% if paginate.previous %}
+
+                <a
+                  href="{{ paginate.previous.url }}"
+                  class="button button--secondary"
+                >
+                  Previous
+                </a>
+
+              {% endif %}
+
+
+              <span class="main-search__pagination-status">
+                Page {{ paginate.current_page }}
+                of {{ paginate.pages }}
+              </span>
+
+
+              {% if paginate.next %}
+
+                <a
+                  href="{{ paginate.next.url }}"
+                  class="button"
+                >
+                  Next
+                </a>
+
+              {% endif %}
+
+            </nav>
+
+          {% endif %}
+
+        {% endpaginate %}
+
+      {% else %}
+
+        <div class="main-search__empty">
+
+          <h2 class="heading-md">
+            No results found
+          </h2>
+
+          <p class="text-muted">
+            We couldn't find anything matching
+            "{{ search.terms | escape }}".
+          </p>
+
+          <a
+            href="{{ routes.all_products_collection_url }}"
+            class="button"
+          >
+            Browse all products
+          </a>
+
+        </div>
+
+      {% endif %}
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+
+{% stylesheet %}
+
+  .main-search__header {
+    max-width: 760px;
+
+    margin: 0 auto 3rem;
+
+    text-align: center;
+  }
+
+
+  /* Search form */
+
+  .main-search__form {
+    display: flex;
+
+    max-width: 650px;
+
+    margin: 2rem auto 0;
+  }
+
+  .main-search__input {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 48px;
+
+    padding: 0.75rem 1rem;
+
+    border: 1px solid var(--color-border);
+    border-right: 0;
+
+    border-radius:
+      var(--button-radius)
+      0
+      0
+      var(--button-radius);
+
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .main-search__input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .main-search__form .button {
+    border-radius:
+      0
+      var(--button-radius)
+      var(--button-radius)
+      0;
+  }
+
+
+  /* Results */
+
+  .main-search__count {
+    margin-bottom: 2rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.875rem;
+  }
+
+  .main-search__results {
+    margin-bottom: 3rem;
+  }
+
+
+  /* Non-product results */
+
+  .main-search__result {
+    min-width: 0;
+  }
+
+  .main-search__result-image {
+    display: block;
+
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    margin-bottom: 1rem;
+
+    background: var(--color-surface);
+  }
+
+  .main-search__result-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .main-search__result-content {
+    padding-bottom: 1rem;
+  }
+
+  .main-search__result-type {
+    margin-bottom: 0.35rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .main-search__result-title {
+    margin: 0;
+
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .main-search__result-title a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+
+  /* Empty state */
+
+  .main-search__empty {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 5rem 2rem;
+
+    background: var(--color-surface);
+
+    text-align: center;
+  }
+
+  .main-search__empty .heading-md {
+    margin-bottom: 0.75rem;
+  }
+
+  .main-search__empty p {
+    margin-bottom: 2rem;
+  }
+
+
+  /* Pagination */
+
+  .main-search__pagination {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+    margin-top: 3rem;
+  }
+
+  .main-search__pagination-status {
+    color: var(--color-text-muted);
+
+    font-size: 0.875rem;
+  }
+
+
+  /* Mobile */
+
+  @media screen and (max-width: 749px) {
+
+    .main-search__form {
+      flex-direction: column;
+
+      gap: 0.75rem;
+    }
+
+    .main-search__input {
+      border-right: 1px solid var(--color-border);
+
+      border-radius: var(--button-radius);
+    }
+
+    .main-search__form .button {
+      width: 100%;
+
+      border-radius: var(--button-radius);
+    }
+
+    .main-search__pagination {
+      flex-wrap: wrap;
+    }
+
+  }
+
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "Main search",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main search"
+    }
+  ]
+}
+{% endschema %}

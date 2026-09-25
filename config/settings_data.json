@@ -1,0 +1,42 @@
+{
+  "current": {
+    "brand_name": "Your Store",
+    "brand_tagline": "Quality products, beautifully presented.",
+    "color_background": "#FFFFFF",
+    "color_surface": "#F7F7F5",
+    "color_text": "#171717",
+    "color_text_muted": "#6B6B6B",
+    "color_primary": "#171717",
+    "color_primary_hover": "#333333",
+    "color_border": "#E5E5E5",
+    "font_body": "system_n4",
+    "font_heading": "system_n7",
+    "heading_scale": 100,
+    "page_width": 1400,
+    "content_width": 1200,
+    "section_spacing": 80,
+    "button_style": "square",
+    "button_radius": 4
+  },
+  "presets": {
+    "Default": {
+      "brand_name": "Your Store",
+      "brand_tagline": "Quality products, beautifully presented.",
+      "color_background": "#FFFFFF",
+      "color_surface": "#F7F7F5",
+      "color_text": "#171717",
+      "color_text_muted": "#6B6B6B",
+      "color_primary": "#171717",
+      "color_primary_hover": "#333333",
+      "color_border": "#E5E5E5",
+      "font_body": "system_n4",
+      "font_heading": "system_n7",
+      "heading_scale": 100,
+      "page_width": 1400,
+      "content_width": 1200,
+      "section_spacing": 80,
+      "button_style": "square",
+      "button_radius": 4
+    }
+  }
+}

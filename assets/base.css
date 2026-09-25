@@ -1,0 +1,386 @@
+/* =========================================================
+   Shopify Store Template
+   Base Styles
+   ========================================================= */
+
+:root {
+
+  /* Colors */
+
+  --color-background: #ffffff;
+  --color-surface: #f7f7f5;
+  --color-text: #171717;
+  --color-text-muted: #6b6b6b;
+  --color-primary: #171717;
+  --color-primary-hover: #333333;
+  --color-border: #e5e5e5;
+  --color-white: #ffffff;
+
+
+  /* Typography */
+
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-heading: Arial, Helvetica, sans-serif;
+  --heading-scale: 100%;
+
+
+  /* Layout */
+
+  --page-width: 1400px;
+  --content-width: 1200px;
+
+
+  /* Spacing */
+
+  --section-spacing: 80px;
+
+
+  /* Borders */
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  --button-radius: 4px;
+
+
+  /* Transitions */
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+
+/* ---------------------------------------------------------
+   Reset
+   --------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+
+/* ---------------------------------------------------------
+   Page Layout
+   --------------------------------------------------------- */
+
+.page-width {
+  width: min(
+    calc(100% - 2rem),
+    var(--page-width)
+  );
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-width {
+  width: min(
+    calc(100% - 2rem),
+    var(--content-width)
+  );
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ---------------------------------------------------------
+   Typography
+   --------------------------------------------------------- */
+
+.heading-xl {
+  margin-bottom: 1.5rem;
+
+  font-family: var(--font-heading);
+  font-size: clamp(
+    2.5rem,
+    6vw,
+    4rem
+  );
+
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.heading-lg {
+  margin-bottom: 1.5rem;
+
+  font-family: var(--font-heading);
+  font-size: clamp(
+    2rem,
+    4vw,
+    3rem
+  );
+
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.heading-md {
+  margin-bottom: 1rem;
+
+  font-family: var(--font-heading);
+  font-size: clamp(
+    1.5rem,
+    3vw,
+    2rem
+  );
+
+  font-weight: 600;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0.75rem 1.5rem;
+
+  border: 1px solid var(--color-primary);
+  border-radius: var(--button-radius);
+
+  background: var(--color-primary);
+  color: var(--color-white);
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal),
+    transform var(--transition-fast);
+}
+
+.button:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.button--secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* ---------------------------------------------------------
+   Sections
+   --------------------------------------------------------- */
+
+.section {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+.section--small {
+  padding-top: calc(var(--section-spacing) * 0.6);
+  padding-bottom: calc(var(--section-spacing) * 0.6);
+}
+
+.section--large {
+  padding-top: calc(var(--section-spacing) * 1.5);
+  padding-bottom: calc(var(--section-spacing) * 1.5);
+}
+
+
+/* ---------------------------------------------------------
+   Grid
+   --------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* ---------------------------------------------------------
+   Product Grid
+   --------------------------------------------------------- */
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 2rem;
+}
+
+
+/* ---------------------------------------------------------
+   Accessibility
+   --------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  padding: 0 !important;
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+
+  white-space: nowrap !important;
+
+  border: 0 !important;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 990px) {
+
+  .grid--4,
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media screen and (max-width: 749px) {
+
+  .page-width,
+  .content-width {
+    width: min(
+      calc(100% - 1.5rem),
+      var(--page-width)
+    );
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+}

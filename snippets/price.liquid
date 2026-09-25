@@ -1,0 +1,48 @@
+<div class="price{% if product.compare_at_price > product.price %} price--sale{% endif %}">
+
+  {% if product.compare_at_price > product.price %}
+
+    <span class="price__current">
+      {{ product.price | money }}
+    </span>
+
+    <span class="price__compare">
+      {{ product.compare_at_price | money }}
+    </span>
+
+  {% else %}
+
+    <span class="price__current">
+      {{ product.price | money }}
+    </span>
+
+  {% endif %}
+
+</div>
+
+
+{% stylesheet %}
+
+  .price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    font-size: 0.9375rem;
+  }
+
+  .price__current {
+    font-weight: 600;
+  }
+
+  .price--sale .price__current {
+    color: var(--color-primary);
+  }
+
+  .price__compare {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+  }
+
+{% endstylesheet %}

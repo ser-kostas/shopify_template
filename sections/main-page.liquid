@@ -1,0 +1,112 @@
+<section class="main-page section">
+
+  <div class="content-width">
+
+    <header class="main-page__header">
+
+      <h1 class="heading-lg">
+        {{ page.title }}
+      </h1>
+
+    </header>
+
+
+    {% if page.content != blank %}
+
+      <div class="main-page__content">
+        {{ page.content }}
+      </div>
+
+    {% else %}
+
+      <div class="main-page__empty">
+        <p class="text-muted">
+          This page does not have any content yet.
+        </p>
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+
+{% stylesheet %}
+
+  .main-page__header {
+    margin-bottom: 2.5rem;
+
+    text-align: center;
+  }
+
+  .main-page__header .heading-lg {
+    margin-bottom: 0;
+  }
+
+
+  .main-page__content {
+    max-width: 800px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+
+  .main-page__content h2,
+  .main-page__content h3,
+  .main-page__content h4 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+
+  .main-page__content p {
+    margin-bottom: 1.25rem;
+  }
+
+
+  .main-page__content a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+
+  .main-page__content img {
+    height: auto;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+
+  .main-page__empty {
+    max-width: 800px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 4rem 2rem;
+
+    background: var(--color-surface);
+
+    text-align: center;
+  }
+
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "Main page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main page"
+    }
+  ]
+}
+{% endschema %}
